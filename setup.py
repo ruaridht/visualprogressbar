@@ -40,8 +40,6 @@ setup(name=NAME,
       url=URL,
       download_url=DOWNLOAD_URL,
       license=LICENSE,
-      cmdclass={'submodule': UpdateSubmodules,
-                'buildjs': BuildJavascript},
       packages=['visualprogressbar'],
       classifiers=[
           'Development Status :: 4 - Beta',
