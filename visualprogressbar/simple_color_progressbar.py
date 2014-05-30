@@ -108,7 +108,7 @@ class SimpleColorProgressBar(object):
     ...     pb.update()
     """
     def __init__(self, color_palette='RdYlGn', num_iterations=100):
-        self.colors = self._get_colour_palette(name=color_palette)
+        self.colors = self._get_color_palette(name=color_palette)
         self.num_iterations = num_iterations
         self.update_weight = 100.0 / num_iterations
         self.loop_count = 0
