@@ -2,7 +2,7 @@
 """
 #-----------------------------------------------------------------------------
 # Authors: Ruaridh Thomson <echelous@me.com>
-# License: Example License (see http://choosealicense.com/)
+# License: MIT License
 #-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
@@ -102,12 +102,10 @@ class SimpleColorProgressBar(object):
 
     Examples
     --------
-    >>> pb = SimpleColorBar()
-    >>> example = ExampleClass(arg1=x, arg2=0)
-
-    See also
-    --------
-    ExampleClass2: for more information on constructing an example class.
+    >>> pb = SimpleColorProgressBar(color_palette='winter', num_iterations=100)
+    >>> for i in range(100):
+    ...     time.sleep(0.1)
+    ...     pb.update()
     """
     def __init__(self, color_palette='RdYlGn', num_iterations=100):
         self.colors = get_colour_palette(name=color_palette)
@@ -120,19 +118,8 @@ class SimpleColorProgressBar(object):
 
     def _setup_progress_bar(self):
         """
-        A bit of information telling us what this function does. Example
-        parameter and return decriptions below.
-
-        Parameters
-        ----------
-        arg1 : boolean, default True
-            Description of why we need this variable
-        arg2 : boolean, default True
-            Whether to return the probabilities or the class.
-
-        Returns
-        -------
-        y : recarray
+        Setup the HTML, CSS and JS content of the progress bar and display it in
+        the notebook.
         """
         self.divid = str(uuid.uuid4())
 
@@ -142,6 +129,21 @@ class SimpleColorProgressBar(object):
         display(pb)
 
     def _get_color_palette(self, name='RdYlGn', n_colors=100):
+        """
+        A bit of information telling us what this function does. Example
+        parameter and return decriptions below.
+
+        Parameters
+        ----------
+        name : String, default 'RdYlGn'
+            Name of the color palette to be loaded.
+        n_colors : int, default 100
+            Number of colours to be loaded into the palette.
+
+        Returns
+        -------
+        palette_strings : list
+        """
         palette = sns.color_palette(name=name, n_colors=n_colors)
 
         palette_strings = []
@@ -159,6 +161,9 @@ class SimpleColorProgressBar(object):
         return palette_strings
 
     def update(self):
+        """
+        Update the progress bar, taking into account the current loop count.
+        """
         update_count = int(self.loop_count * self.update_weight)
 
         if self.loop_count == self.num_iterations-1:
