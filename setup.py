@@ -29,10 +29,6 @@ DOWNLOAD_URL = 'http://github.com/ruaridht/visualprogressbar'
 LICENSE = 'MIT License'
 VERSION = get_version()
 
-# Make sure submodules are updated and synced
-root_dir = os.path.abspath(os.path.dirname(__file__))
-require_clean_submodules(root_dir, sys.argv)
-
 setup(name=NAME,
       version=VERSION,
       description=DESCRIPTION,
